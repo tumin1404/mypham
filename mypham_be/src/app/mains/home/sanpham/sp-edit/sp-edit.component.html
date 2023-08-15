@@ -1,0 +1,99 @@
+<main role="main" class="main-content">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/home/sanpham">Sản phẩm</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Sửa</li>
+          </ol>
+      </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card-deck">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Sửa thông tin sản phẩm</strong>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="spedit" (submit)="onSubmit()" action="" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Loại sản phẩm</label>
+                                <select formControlName="product_cate_id" class="form-control">
+                                    <option value="" selected>Chọn loại sản phẩm</option>
+                                    <option *ngFor="let lsp of dsLoaisanpham" value="{{lsp.cate_id}}">{{lsp.cate_name}}</option>
+                                </select>
+                                <div *ngIf="submited && f.product_cate_id.errors">
+                                <small *ngIf="f.product_cate_id.errors?.['required']">Loại sản phẩm không để trống!</small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Nhà cung cấp</label>
+                                <select formControlName="product_distributor_id" class="form-control">
+                                    <option value="" selected>Chọn nhà cung cấp</option>
+                                    <option *ngFor="let ncc of dsNhacungcap" value="{{ncc.distributor_id}}">{{ncc.distributor_name}}</option>
+                                </select>
+                                <div *ngIf="submited && f.product_distributor_id.errors">
+                                <small *ngIf="f.product_distributor_id.errors?.['required']">Nhà cung cấp không để trống!</small>
+                                </div>
+                            </div>
+                        <div class="form-group col-md-6">
+                                <label>Tên sản phẩm</label>
+                                <input type="text" class="form-control" formControlName="product_name" placeholder="Tên sản phẩm">
+                                <div *ngIf="submited && f.product_name.errors">
+                                <small *ngIf="f.product_name.errors?.['required']">Tên sản phẩm không để trống!</small>
+                                </div>
+                        </div>
+                            <div class="form-group col-md-6">
+                                <label>Ảnh mẫu sản phẩm</label>
+                                <input type="text" class="form-control" formControlName="product_img" placeholder="Ảnh sản phẩm">
+                                <div *ngIf="submited && f.product_img.errors">
+                                <small *ngIf="f.product_img.errors?.['required']">Ảnh sản phẩm không để trống!</small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Giá niêm yết</label>
+                                <input type="text" class="form-control" formControlName="product_price" placeholder="Giá niêm yết">
+                                <div *ngIf="submited && f.product_price.errors">
+                                <small *ngIf="f.product_price.errors?.['required']">Giá niêm yết không để trống!</small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Giá bán</label>
+                                <input type="text" class="form-control" formControlName="product_sale" placeholder="Giá bán">
+                                <div *ngIf="submited && f.product_sale.errors">
+                                <small *ngIf="f.product_sale.errors?.['required']">Giá bán không để trống!</small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Số lượng</label>
+                                <input type="text" class="form-control" formControlName="product_quantity" placeholder="Số lượng">
+                                <div *ngIf="submited && f.product_quantity.errors">
+                                <small *ngIf="f.product_quantity.errors?.['required']">Số lượng không để trống!</small>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Đơn vị tính</label>
+                                <input type="text" class="form-control" formControlName="product_unit" placeholder="Đơn vị tính">
+                                <div *ngIf="submited && f.product_unit.errors">
+                                <small *ngIf="f.product_unit.errors?.['required']">Đơn vị tính không để trống!</small>
+                                </div>
+                            </div>
+                        </div>             
+                        <div class="form-group row">
+                        <label class="col-sm-6">Ghi chú</label>
+                        <div class="col-sm-12">
+                            <textarea formControlName="product_note" class="form-control" rows="10" placeholder="Ghi chú"></textarea>
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                  </form>
+                </div>
+              </div>
+            </div> <!-- / .card-desk-->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </main> <!-- main -->

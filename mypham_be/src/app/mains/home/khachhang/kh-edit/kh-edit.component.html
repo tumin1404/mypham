@@ -1,0 +1,65 @@
+<main role="main" class="main-content">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/home/khachhang">Khách hàng</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Sửa</li>
+          </ol>
+      </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card-deck">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Sửa thông tin khách hàng</strong>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="khedit" (submit)="onSubmit()" action="" method="POST">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Tên khách hàng</label>
+                        <input type="text" class="form-control" formControlName="customer_name" placeholder="Tên khách hàng">
+                        <div *ngIf="submited && f.customer_name.errors">
+                          <small *ngIf="f.customer_name.errors?.['required']">Tên khách hàng không để trống!</small>
+                        </div>
+                      </div> 
+                      <div class="form-group col-md-6">
+                        <label>Số điện thoại</label>
+                        <input type="text" class="form-control" formControlName="customer_phone" placeholder="Số điện thoại">
+                        <div *ngIf="submited && f.customer_phone.errors">
+                          <small *ngIf="f.customer_phone.errors?.['required']">Số điện thoại không để trống!</small>
+                        </div>
+                      </div> 
+                      <div class="form-group col-md-7">
+                        <label>Địa chỉ</label>
+                        <input type="text" class="form-control" formControlName="customer_address" placeholder="Địa chỉ">
+                        <div *ngIf="submited && f.customer_address.errors">
+                          <small *ngIf="f.customer_address.errors?.['required']">Địa chỉ không để trống!</small>
+                        </div>
+                      </div> 
+                      <div class="form-group col-md-5">
+                        <label>Email</label>
+                        <input type="text" class="form-control" formControlName="customer_mail" placeholder="Email">
+                        <div *ngIf="submited && f.customer_mail.errors">
+                          <small *ngIf="f.customer_mail.errors?.['required']">Email không để trống!</small>
+                        </div>
+                      </div>                   
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-6">Ghi chú</label>
+                      <div class="col-sm-12">
+                        <textarea formControlName="customer_note" class="form-control" rows="10" placeholder="Ghi chú"></textarea>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                  </form>
+                </div>
+              </div>
+            </div> <!-- / .card-desk-->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </main> <!-- main -->

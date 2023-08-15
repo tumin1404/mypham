@@ -1,0 +1,50 @@
+<main role="main" class="main-content">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/home/loaisanpham">Loại sản phẩm</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Edit</li>
+          </ol>
+      </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card-deck">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Sửa thông tin loại sản phẩm</strong>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="lspedit" (submit)="onSubmit()" action="" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Tên loại sản phẩm</label>
+                                <input type="text" class="form-control" formControlName="cate_name" placeholder="Tên loại sản phẩm">
+                                <div *ngIf="submited && f.cate_name.errors">
+                                    <small *ngIf="f.cate_name.errors?.['required']">Tên loại sản phẩm không để trống!</small>
+                                </div>
+                            </div>                      
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Ảnh mẫu</label>
+                                <input input type="text" class="form-control" formControlName="cate_img">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-6">Ghi chú</label>
+                            <div class="col-sm-12">
+                                <textarea formControlName="cate_note" class="form-control" rows="10" placeholder="Ghi chú"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                  </form>
+                </div>
+              </div>
+            </div> <!-- / .card-desk-->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </main> <!-- main -->

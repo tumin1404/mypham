@@ -1,0 +1,104 @@
+<main role="main" class="main-content">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/home/taikhoan">Tài khoản</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Sửa</li>
+          </ol>
+      </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card-deck">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Sửa thông tin tài khoản</strong>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="tkedit" (submit)="onSubmit()" action="" method="POST">
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label>Tên chủ tài khoản</label>
+                        <input type="text" class="form-control" formControlName="users_full_name" placeholder="Tên chủ tài khoản">
+                        <div *ngIf="submited && f.users_full_name.errors">
+                          <small *ngIf="f.users_full_name.errors?.['required']">Tên chủ tài khoản không để trống!</small>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label>Tài khoản</label>
+                        <input type="text" class="form-control" formControlName="users_name" placeholder="Tài khoản">
+                        <div *ngIf="submited && f.users_name.errors">
+                          <small *ngIf="f.users_name.errors?.['required']">Tài khoản không để trống!</small>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label>Mật khẩu</label>
+                        <input type="text" class="form-control" formControlName="users_password" placeholder="Mật khẩu">
+                        <div *ngIf="submited && f.users_password.errors">
+                          <small *ngIf="f.users_password.errors?.['required']">Mật khẩu không để trống!</small>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label>Email</label>
+                        <input type="text" class="form-control" formControlName="users_mail" placeholder="Email">
+                        <div *ngIf="submited && f.users_mail.errors">
+                          <small *ngIf="f.users_mail.errors?.['required']">Email không để trống!</small>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group col-md-4">
+                        <label>Số tiện thoại</label>
+                        <input type="text" class="form-control" formControlName="users_phone" placeholder="Số tiện thoại">
+                        <div *ngIf="submited && f.users_phone.errors">
+                          <small *ngIf="f.users_phone.errors?.['required']">Số tiện thoại không để trống!</small>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label>Loại tài khoản</label>
+                        <select formControlName="users_role" class="form-control">
+                            <option value="" selected>Chọn...</option>
+                            <option value="user">user</option>
+                            <option value="admin">admin</option>
+                        </select>
+                        <div *ngIf="submited && f.users_role.errors">
+                          <small *ngIf="f.users_role.errors?.['required']">Loại tài khoản không để trống!</small>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-8">
+                        <label>Token</label>
+                        <input type="text" class="form-control" formControlName="users_token" placeholder="Token">
+                        <!-- <div *ngIf="submited && f.users_token.errors">
+                          <small *ngIf="f.users_token.errors?.['required']">Token không để trống!</small>
+                        </div> -->
+                      </div>
+                      
+                      <div class="form-group col-md-4">
+                        <label>Trạng thái</label>
+                        <select formControlName="users_status" class="form-control">
+                            <option value="" selected>Chọn...</option>
+                            <option value="Hoạt động">Hoạt động</option>
+                            <option value="Khóa">Khóa</option>
+                            <option value="Lỗi">Lỗi</option>
+                        </select>
+                        <div *ngIf="submited && f.users_status.errors">
+                          <small *ngIf="f.users_status.errors?.['required']">Trạng thái không để trống!</small>
+                        </div>
+                      </div>              
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-6">Ghi chú</label>
+                      <div class="col-sm-12">
+                        <textarea formControlName="users_note" class="form-control" rows="10" placeholder="Ghi chú"></textarea>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                  </form>
+                </div>
+              </div>
+            </div> <!-- / .card-desk-->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </main> <!-- main -->

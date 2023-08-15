@@ -1,0 +1,108 @@
+<div class="wrapper">
+    <main role="main" class="main-content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="row">
+              <!-- Small table -->
+              <div class="col-md-12 my-4">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <div class="toolbar">
+                      <form class="form">
+                        <div class="form-row">
+                          <div class="form-group col-auto mr-auto">
+                            <a routerLink="/home/taikhoan/add">
+                              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target=".create_new" data-whatever="@mdo">Thêm mới
+                                <i class="fa-solid fa-plus"></i>
+                              </button>
+                            </a> 
+                          </div>
+                          <div class="form-group col-auto">
+                            <label for="search" class="sr-only">Search</label>
+                            <input type="text" class="form-control" id="search1" value="" placeholder="Search">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- table -->
+                    <table class="table table-borderless table-hover">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>ID</th>
+                          <th class="w-15">Tên chủ tài khoản</th>
+                          <th class="w-20">Account</th>
+                          <th>Password</th>
+                          <th class="w-10">Email</th>
+                          <th class="w-20">Số điện thoại</th>
+                          <th class="w-20">Token</th>
+                          <th class="w-20">Loại tài khoản</th>
+                          <th class="w-20">Trạng thái</th>
+                          <th class="w-20">Ghi chú</th>
+                          <th>Ngày tạo</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let tk of dsTaikhoan">
+                        <tr>
+                          <td>
+                            <div>
+                              <p><strong>{{tk.users_id}}</strong></p>
+                            </div>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_full_name}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_name}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_password}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_mail}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_phone}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_token}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_role}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_status}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_note}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{tk.users_date_created | date :"dd/MM/yyyy"}}</strong></p>
+                          </td>
+                          <td>
+                            <a routerLink="/home/taikhoan/edit/{{tk.users_id}}"><button type="button" class="btn mb-2 btn-outline-warning">Sửa</button></a>
+                            <button (click)="xoaTaikhoan(tk)" type="button" class="btn mb-2 btn-outline-danger">Xóa</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <nav aria-label="Table Paging" class="mb-0 text-muted">
+                      <ul class="pagination justify-content-center mb-0">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div> <!-- customized table -->
+            </div> <!-- end section -->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </main> <!-- main -->
+</div> <!-- .wrapper -->
+

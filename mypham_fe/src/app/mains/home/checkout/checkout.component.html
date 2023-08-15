@@ -1,0 +1,102 @@
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">Checkout<span>Shop</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/shop">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+        <div class="checkout">
+            <div class="container">
+                <form [formGroup]="checkout" (submit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h2 class="checkout-title">Thông tin khách hàng</h2><!-- End .checkout-title -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Họ tên *</label>
+                                        <input type="text" formControlName="customer_name" ngModel class="form-control" required>
+                                        <div *ngIf="submited && f.customer_name.errors">
+                                            <small *ngIf="f.customer_name.errors?.['required']">Tên khách hàng không để trống!</small>
+                                          </div>
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6">
+                                        <label>Số điện thoại *</label>
+                                        <input type="text" formControlName="customer_phone" ngModel class="form-control" required>
+                                        <div *ngIf="submited && f.customer_phone.errors">
+                                            <small *ngIf="f.customer_phone.errors?.['required']">Số điện thoại không để trống!</small>
+                                          </div>
+                                    </div><!-- End .col-sm-6 -->
+                                </div><!-- End .row -->
+
+                                <label>Địa chỉ *</label>
+                                <div *ngIf="submited && f.customer_address.errors">
+                                    <small *ngIf="f.customer_address.errors?.['required']">Địa chỉ không để trống!</small>
+                                  </div>
+                                <input type="text" formControlName="customer_address" ngModel placeholder="Xã-Huyện-Tỉnh" class="form-control" required>
+                                <div>
+                                    <label>Email *</label>
+                                    <div *ngIf="submited && f.customer_mail.errors">
+                                        <small *ngIf="f.customer_mail.errors?.['required']">Email không để trống!</small>
+                                      </div>
+                                    <input type="email" formControlName="customer_mail" ngModel class="form-control" required>
+                                </div>
+                                
+
+                                <label>Ghi chú đơn hàng</label>
+                                <textarea formControlName="customer_note" id="txt_ghichu" ngModel class="form-control" cols="30" rows="4" placeholder="Ghi chú cho đơn hàng về vấn đề vận chuyển, thanh toán,....."></textarea>
+                        </div><!-- End .col-lg-9 -->
+                        <aside class="col-lg-3">
+                            <div class="summary">
+                                <h3 class="summary-title">Đơn hàng của bạn</h3><!-- End .summary-title -->
+
+                                <table class="table table-summary">
+                                    <thead>
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>Tổng</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr *ngFor="let item of list_Cart">
+                                            <td><a [routerLink]="['/product-detail',item.product_id]">{{item.product_name}}</a></td>
+                                            <td>{{item.quantity*item.product_sale |currency:'VND'}}</td>
+                                        </tr>
+                                        <tr class="summary-subtotal">
+                                            <td>Tạm tính:</td>
+                                            <td>{{total|currency:"VND"}} VND</td>
+                                        </tr><!-- End .summary-subtotal -->
+                                        <tr>
+                                            <td>Shipping:</td>
+                                            <td>Free shipping</td>
+                                        </tr>
+                                        <tr class="summary-total">
+                                            <td>Tổng tiền:</td>
+                                            <td>{{total|currency:"VND"}} VND</td>
+                                        </tr><!-- End .summary-total -->
+                                    </tbody>
+                                </table><!-- End .table table-summary -->
+
+                                <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+                                    <span class="btn-text">Place Order</span>
+                                    <span class="btn-hover-text">Proceed to Checkout</span>
+                                </button>
+                            </div><!-- End .summary -->
+                        </aside><!-- End .col-lg-3 -->
+                    </div><!-- End .row -->
+                </form>
+            </div><!-- End .container -->
+        </div><!-- End .checkout -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->

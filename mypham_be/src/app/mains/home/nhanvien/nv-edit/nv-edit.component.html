@@ -1,0 +1,87 @@
+<main role="main" class="main-content">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+      <div class="container">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+              <li class="breadcrumb-item"><a routerLink="/home/nhanvien">Nhân viên</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Sửa</li>
+          </ol>
+      </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card-deck">
+              <div class="card shadow mb-4">
+                <div class="card-header">
+                  <strong class="card-title">Sửa thông nhân viên</strong>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="nvedit" (submit)="onSubmit()" action="" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label>Tên nhân viên</label>
+                          <input type="text" class="form-control" formControlName="staff_name" placeholder="Tên nhân viên">
+                          <div *ngIf="submited && f.staff_name.errors">
+                            <small *ngIf="f.staff_name.errors?.['required']">Tên nhân viên không để trống!</small>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label>Ngày sinh</label>
+                          <input class="form-control" formControlName="staff_dateofbirth" type="date" name="date">
+                          <div *ngIf="submited && f.staff_dateofbirth.errors">
+                            <small *ngIf="f.staff_dateofbirth.errors?.['required']">Ngày sinh không để trống!</small>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label>Số điện thoại</label>
+                          <input type="text" class="form-control" formControlName="staff_phone" placeholder="Số điện thoại">
+                          <div *ngIf="submited && f.staff_phone.errors">
+                            <small *ngIf="f.staff_phone.errors?.['required']">Số điện thoại không để trống!</small>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-7">
+                          <label>Địa chỉ</label>
+                          <input type="text" class="form-control" formControlName="staff_address" placeholder="Địa chỉ">
+                          <div *ngIf="submited && f.staff_address.errors">
+                            <small *ngIf="f.staff_address.errors?.['required']">Địa chỉ không để trống!</small>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group col-md-5">
+                          <label>Email</label>
+                          <input type="text" class="form-control" formControlName="staff_mail" placeholder="Email">
+                          <div *ngIf="submited && f.staff_mail.errors">
+                            <small *ngIf="f.staff_mail.errors?.['required']">Email không để trống!</small>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Giới tính</label>
+                          <input type="text" class="form-control" formControlName="staff_sex" placeholder="Giới tính">
+                          <div *ngIf="submited && f.staff_sex.errors">
+                            <small *ngIf="f.staff_sex.errors?.['required']">Giới tính không để trống!</small>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Chức vụ</label>
+                          <input type="text" class="form-control" formControlName="staff_levels" placeholder="Chức vụ">
+                          <div *ngIf="submited && f.staff_levels.errors">
+                            <small *ngIf="f.staff_levels.errors?.['required']">Chức vụ không để trống!</small>
+                          </div>
+                        </div>               
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-6">Ghi chú</label>
+                        <div class="col-sm-12">
+                          <textarea formControlName="staff_note" class="form-control" rows="10" placeholder="Ghi chú"></textarea>
+                        </div>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                  </form>
+                </div>
+              </div>
+            </div> <!-- / .card-desk-->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </main> <!-- main -->

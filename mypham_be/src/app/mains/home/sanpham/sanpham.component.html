@@ -1,0 +1,142 @@
+<div class="wrapper">
+    <main role="main" class="main-content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="row">
+              <!-- Small table -->
+              <div class="col-md-12 my-4">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <div class="toolbar">
+                      <form [formGroup]="frmSearch" (ngSubmit)="LoadData()" class="form">
+                        <div class="form-row">
+                          <div class="form-group col-auto mr-auto">
+                            <a routerLink="/home/sanpham/add">
+                              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target=".create_new" data-whatever="@mdo">Thêm mới
+                                <i class="fa-solid fa-plus"></i>
+                              </button>
+                            </a> 
+                          </div>
+                          <div class="form-group col-auto">
+                            <label for="search" class="sr-only">Search</label>
+                            <input type="text" formControlName="ten" class="form-control" id="search1" value="" placeholder="Search">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- table -->
+                    <table class="table table-borderless table-hover">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>ID</th>
+                          <th class="w-20">Tên loại</th>
+                          <th class="w-20">Nhà cung cấp</th>
+                          <th class="w-15">Tên sản phẩm</th>
+                          <th class="w-20">Ảnh mẫu</th>
+                          <th>Giá niêm yết</th>
+                          <th>Giá bán</th>
+                          <th>Số lượng</th>
+                          <th>Đơn vị tính</th>
+                          <th>Ghi chú</th>
+                          <th>Ngày tạo</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let sp of dsSanpham | paginate :{itemsPerPage: tablesize,
+                        currentPage: page,
+                        totalItems: count
+                      }">
+                        <tr>
+                          <td>
+                            <div>
+                              <p><strong>{{sp.product_id}}</strong></p>
+                            </div>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.cate_name}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.distributor_name}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.product_name}}</strong></p>
+                          </td>
+                          <td>
+                            <img style="height: 200px; width: 170px;" src="../../../../assets/images/img-nussee/{{sp.product_img}}" alt="">
+                          </td>
+                          <td>
+                            <p><strong>{{sp.product_price}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.product_sale}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.product_quantity}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.product_unit}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.product_note}}</strong></p>
+                          </td>
+                          <td>
+                            <p><strong>{{sp.product_date_created | date :"dd/MM/yyyy"}}</strong></p>
+                          </td>
+                          <td>
+                            <a routerLink="/home/sanpham/edit/{{sp.product_id}}"><button type="button" class="btn mb-2 btn-outline-warning">Sửa</button></a>
+                            <button (click)="xoaSanpham(sp)" type="button" class="btn mb-2 btn-outline-danger">Xóa</button>
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                    <nav aria-label="Table Paging" class="mb-0 text-muted">
+                      <ul class="pagination justify-content-center mb-0">
+                        <div>
+                          <pagination-controls
+                          previousLabel="Quay lại"
+                          nextLabel="Tiếp"
+                          (pageChange)="dataChange($event)"></pagination-controls>
+                        </div>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div> <!-- customized table -->
+            </div> <!-- end section -->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid -->
+    </main> <!-- main -->
+</div> <!-- .wrapper -->
+
+<!-- MODAL -->
+<div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="varyModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn mb-2 btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div><!-- MODAL -->

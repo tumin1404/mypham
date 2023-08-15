@@ -1,0 +1,11 @@
+<div class="intro-slider-container">
+    <div class="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl" data-owl-options='{"nav": false}'>
+        <div *ngFor="let sl of dsslide" class="intro-slide"> <!--style="background-image: url(assets/images/demos/demo-2/slider/slide-1.jpg);"-->
+            <div class="container intro-content">
+                <img src="../../../../assets/images/slide/{{sl.slide_img}}" alt="">
+            </div><!-- End .container intro-content -->
+        </div><!-- End .intro-slide -->
+    </div><!-- End .owl-carousel owl-simple -->
+
+    <span class="slider-loader text-white"></span><!-- End .slider-loader -->
+</div>
